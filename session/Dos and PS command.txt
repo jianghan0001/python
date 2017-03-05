@@ -1,0 +1,22 @@
+DOS command           powershell command
+md  		mkdir
+rd 		rmdir
+cd
+cd..
+dir		ls
+type NUL >abc.txt	new-item
+copy abc.txt def.txt     cp abc.txt def.txt
+move abc.txt C:\py\session\DOS_abc.txt	mv abc.txt C:\py\session\PS_abc.txt
+type def.txt	cat def.txt or more
+del def.txt		rm def.txt
+exit()		exit
+
+
+SELECT title, name
+FROM (movie JOIN casting ON movie.id=movieid) JOIN actor on actor.id=actorid
+WHERE ord=1 AND title IN(SELECT title
+FROM (movie JOIN casting ON movie.id=movieid) JOIN actor on actor.id=actorid
+WHERE name='Julie Andrews')
+ORDER BY name
+
+select title, name from casting  join actor on actorid = actor.id join movie on movie.id=movieid and title in (select title from casting  join actor on actorid = actor.id join movie on movie.id=movieid where name= 'Julie Andrews') where ord=1
