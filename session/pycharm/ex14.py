@@ -1,5 +1,5 @@
 from sys import argv
-
+#argv 类包
 script, user_name= argv
 prompt='>'
 

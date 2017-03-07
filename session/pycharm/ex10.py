@@ -8,10 +8,10 @@ I'll do a list
 \t* Fishies
 \t*catnip\n\t* Grass
 '''
-
+#块print
 print(tabby_cat)
 print(persian_cat)
 print(backslash_cat)
 print(fat_cat)
 
-#为了打特殊字符 在字符前加"\"
+#为了打特殊字符 在字符前加"\" print 后面要有括号 无论是什么
