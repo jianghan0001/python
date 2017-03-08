@@ -5,7 +5,7 @@ script, from_file,to_file=argv
 #定义2个变量 from_file and to_file
 print ("Copying from {0} to {1}".format(from_file,to_file))
 
-in_file=open(from_file)
+in_file=open(from_file)#open只是打开文件 找到文件
 indata=in_file.read()
 #in_file只存了一个磁盘的地址
 #indate是正八经的内容
@@ -23,3 +23,31 @@ print ("Alright all done.")
 
 out_file.close()
 in_file.close()
+#指针要关掉
+#'r'-read 'w'-write 'a'-append 'r+'-read and write 'rb'-read binary 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
