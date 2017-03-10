@@ -1,0 +1,24 @@
+print (3*2)
+print (3**3)
+print (3+2.0)
+print(2>1.0)
+
+x=int(input('Enter an integer: '))
+a=float(input('Please enter your first number!'))
+b=float(input('Please enter your second number!'))
+if x%2 ==0:
+    print('')
+    print('Even')
+else:
+    print('')
+    print('odd')
+print('Done woth conditional')
+if a==b:
+     print ('a and b are equal')
+     if b!=0:
+         print('b is not 0')
+elif a>b :
+    print ('a is biger than b')
+else:
+    print('a is smaller than b')
+print('Thanks')
