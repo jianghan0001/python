@@ -309,12 +309,127 @@ def words_offen(freqs, minTimes):
 			else:
 				done= True
 	return result #result表示删掉的东西
+	
+	# 给个dict 找里面的list的个数最多的
+	def biggest(aDict):
+    '''
+    aDict: A dictionary, where all the values are lists.
 
+    returns: The key with the largest number of values associated with it
+    '''
+		result = None
+		biggestValue = 0
+		for key in aDict.keys():
+			if len(aDict[key]) >= biggestValue:
+				result = key
+				biggestValue = len(aDict[key])
+		return result
+#use dict store result already got 来加速
+def fib(n):
+	if n==1:
+		return 1
+	elif n==2:
+		return 2
+	else:
+		fib(n)=fib(n-1) + fib(n-2)
+#楼上的当数变大的时候会慢 因为fib在反复的算 如果把算过的fib存起来 会加快
 
+def fib_efficient(n, d):
+	if n in d:
+		return d[n]
+	else:
+		ans = fib_efficient(n-1, d) + fib_efficient(n-2, d)
+		d[n] = ans
+		return ans
+d = {1:1, 2:2}
+print(fib_efficient(3, d))
 
+#except assert
+while True: #只有给了数的才会到达gundan  否则一直循环while True
+    try:
+        n=input('lai ge shu')
+        n=int(n)
+        break
+    except: #有错就执行这里
+        print('shabi')
+print("gunba")
 
+# 打开一个文件 把它split掉  然后在新list里分下组
+data=[]
+file_name=input('provide a name of a file of data')
+try:
+    pi=open(file_name, 'r')
+except:
+    print('cannot open [0]'.format(file_name))
+else:
+    for new in pi:
+        if new != '/n':
+            addIt= new[:-1].split(',')#remove trailing \n
+            data.append(addIt)
+finally:
+    pi.close() #close file even if fail
+gradeData=[]
+if data:
+    for student in data:
+        try:
+            name=student[:-1]
+            grades= int(student[-1])
+            gradeData.append(name, grades)
+        except:
+            gradeData.append([student[:], []])
 
-
-
-
-
+#except could be a condition when reach it appear
+def get_ratios(L1, L2):
+    ratios=[]
+    for index in range(len(L1)):
+        try:
+            ratios.append(L1[index]/float(L2[index]))
+        except ZeroDivisionError:
+            ratios.append(float('NaN')) #NaN = not a num when ZeroDivisionError appear it will replace wrong value with nan
+        except:
+            raise ValueError ('get_ratios called with bad arg ')
+    return ratios
+L1=[1,2,3]
+L2=[4,5,6]
+L3=[[1,2],3,4]
+L4=[0,3,4]
+L5=[a,1,1]
+L6=[L1, L2, L5]
+print(get_ratios(L1,L2))#OK
+print(get_ratios(L1,L4))#0--nan
+print(get_ratios(L1,L6))#L3 and L6 all typeerror
+print(get_ratios(L1,L5))#get_ratios called with bad arg
+#except create new-grade
+def get_stats(class_list):
+	new_stats=[]
+	for lte in class_list:
+		new_stats.append([lte[0], lte[1], avg(lte[1])])
+	return new_stats
+def avg(grades):
+    try:
+	    return sum(grades)/len(grades)
+    except ZeroDivisionError:
+        return 0.0
+test_grade=[[['peter','parker'],[10.0, 5.0, 85.0]],
+			[['bruce', 'wayne'], [10.0, 8.0, 74.0]],
+			[['captain', 'america'], [8.0, 10.0, 74.0]],
+			[['deadpool'], []]]
+print(get_stats(test_grade))
+#[[['peter', 'parker'], [10.0, 5.0, 85.0], 33.333333333333336], [['bruce', 'wayne'], [10.0, 8.0, 74.0], 30.666666666666668], [['captain', 'america'], [8.0, 10.0, 74.0], 30.666666666666668], [['deadpool'], [], 0.0]]		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

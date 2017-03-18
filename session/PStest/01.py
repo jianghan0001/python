@@ -1,21 +1,15 @@
-animals = { 'a': ['aardvark'], 'b': ['baboon'], 'c': ['coati']}
-
-animals['d'] = ['donkey']
-animals['d'].append('dog')
-animals['d'].append('dingo')
-print(animals)
-
-def how_many(aDict):
-    '''
-    Another way to solve the problem.
-
-    aDict: A dictionary, where all the values are lists.
-
-    returns: int, how many individual values are in the dictionary.
-    '''
-    result = 0
-    for key in aDict.keys():
-        result += len(aDict[key])
-    return result
-
-print(how_many(animals))
+def get_stats(class_list):
+	new_stats=[]
+	for lte in class_list:
+		new_stats.append([lte[0], lte[1], avg(lte[1])])
+	return new_stats
+def avg(grades):
+    try:
+	    return sum(grades)/len(grades)
+    except ZeroDivisionError:
+        return 0.0
+test_grade=[[['peter','parker'],[10.0, 5.0, 85.0]],
+			[['bruce', 'wayne'], [10.0, 8.0, 74.0]],
+			[['captain', 'america'], [8.0, 10.0, 74.0]],
+			[['deadpool'], []]]
+print(get_stats(test_grade))
