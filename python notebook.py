@@ -58,7 +58,7 @@ print('Your number is %d' %ans)
 epsilon=0.01
 num=54.0
 guess=num/2.0
-while abs(guess**2-num)>epsilon
+while abs(guess**2-num)>epsilon:
 	guess=guess-(((guess**2)-num)/(2*guess))
 print ('Square root of '+ str(num) +'is about '+ str(guess))
 
@@ -181,7 +181,7 @@ L2= L+ L1 #L2 should be[2,1,3,5,4,5,6]
 L.extend([0,6])#[2,1,3,5,0,6]
 del(L[0])#[1,3,5,0,6]
 L.pop() #return the last part
-L.pop(1)# 第二个 ‘1’
+L.pop(1)# 位置1--》3
 L.remove(3) #[1,5,0,6]
 
 s='abc'
@@ -275,19 +275,19 @@ del animals['b']#删掉b那行
 animals.values() #前缀是必须的 dict_values(['anteater', 'coati', 'donkey'])
 #using dictionary
 #1 create dictionary from a song a word with 出现次数
-def lyrics_to_drequencies(lyrics):
+def lyrics_to_drequencies(lyrics):#此fun为数一个list里面每个东西出现的次数 创建dict如{'a':3, 'b':4...}
 	myDict={}#创建一个空洞dict先
-	for word in lyrics: #word as key and times as value
-		if word in lyrics:
-		myDict[word]+= 1 
+	for word in lyrics: #word as key and 出现次数 as value
+		if word in lyrics: #lyrics是一个list
+		myDict[word]+= 1 #myDict[word]是key 会返回对应的value 即出现次数
 		else:
 			myDict[word]=1
 	return myDict
 #2 find the most common words
 beatles= lyrics_to_drequencies(song_name)
-def most_common_words(freqs):
-	values=myDict.value()
-	best=max(values)
+def most_common_words(freqs): #freqs就是个占位符 代表一个dict
+	values=myDict.value()#make a list of values
+	best= max(values) #find the max value
 	words=[]
 	for k in fregs:
 		if freqs[k]== best:
@@ -300,12 +300,12 @@ b#number of the most common
 def words_offen(freqs, minTimes):
 	result=[] #set up an ampty list initially 
 	done= False#flag  
-	while not done:
+	while not done: #as long as we have something to do, do it
 		temp=most_common_words(fregs)
-			if temp[1]>= minTimes:#temp[1]是上个功能里面做出来的d list 里面有出现的次数
+			if temp[1]>= minTimes:#temp[1]是上个功能里面做出来的d list 里面有出现的次数 temp是[['a', 'b', 'c'], [4]]这种结构
 				result=result.append(temp)
 				for w in temp[0]:# 指上个功能做出来的words w list
-					del (freqs[w])#删掉key 即整行删除
+					del (freqs[w])#删掉key 即整行删除 freqs是个dict 
 			else:
 				done= True
 	return result #result表示删掉的东西
@@ -417,19 +417,154 @@ test_grade=[[['peter','parker'],[10.0, 5.0, 85.0]],
 print(get_stats(test_grade))
 #[[['peter', 'parker'], [10.0, 5.0, 85.0], 33.333333333333336], [['bruce', 'wayne'], [10.0, 8.0, 74.0], 30.666666666666668], [['captain', 'america'], [8.0, 10.0, 74.0], 30.666666666666668], [['deadpool'], [], 0.0]]		
 		
+#小甲鱼
+
+import random
+secret = random.randint(1, 10)  # 生成一个1-10的随机数赋给secret
+print('-----------I love Chelsea-----------')
+da = False
+while not da:
+    try:
+        temp = input('please input a number between 1-10: ')
+        guess = int(temp)
+        if guess == secret:
+            print('{0} is the number, bang!'.format(guess))
+            da = True
+        elif guess > secret:
+            print('da le da le')
+        else:
+            print('xiao le xiao le')
+    except:
+        print('num num num')
+print('game over')
+
+		
+#在python中只有以下情况被看作假，注意连空格都不能有--False, None, 0, (), [], {}, '', ""  
+#以一个循环作为条件 打印另一个循环
+temp = input('请输入一个整数:')
+number = int(temp)
+i = 1 
+while number:
+    print(i)
+    i = i + 1
+    number = number - 1	
+'''
+1
+2
+3
+4
+5
+6
+7
+8
+'''	
+#循环套循环 循环里面第一个循环走完 再走第二个循环 里面2个循环走完再走外面大循环 都走完才结束 end="" 表示不换行 继续在这一行 print命令默认换行
+temp = input('请输入一个整数:')
+number = int(temp)
+while number:
+    i = number - 1
+    while i:
+        print(' ', end = '')#end = '' 表示不换行 连着来 ' '加个空格就用空格隔开
+        i = i - 1
+    j = number
+    while j:
+        print('*', end = '')
+        j = j - 1
+    print()
+    number = number - 1
+'''
+请输入一个整数:8
+       ********
+      *******
+     ******
+    *****
+   ****
+  ***
+ **
+*
+
+'''	
+type(a)#返回a的数据类型
+isinstance(a, b)# a是变量 b是数据类型--int/str 此功能返回True or False 即判定a,b的数据类型是否相同
+isdigit()
+is_integer()
+assert #断言 当这个关键词后的条件为假的时候 程序崩溃 自爆		
+small = x if x < y else y 
+#有红蓝绿3种球 其中红3 蓝3 绿6 混合后从中任意拿8个 球组合
+print('red\tblue\tgreen')
+for red in range(0, 4):
+	for blue in range(0, 4):
+		for green in range(2, 7):#注意 因为总数是8个 所以绿的不能小于2
+			if red + blue + green == 8:
+				print (red, '\t', blue, '\t', green)
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+#用户有三次输入密码的机会 如果输入的有'*' 则不算 重新输入
+password = 'wwwwwww'
+count = 3
+while count:
+    pwd = input('please enter you password.')
+    if pwd == password:
+        print ('wo cao ni dui le!')
+        count = 0
+    elif '*' in pwd:
+        print('you should not use * in you password')
+        continue
+    elif pwd != password:
+        count -=1
+        print('zai lai yici, you have {0} times left'.format(count))
+print('gun dan ba ni')	
+abc=[1,2,3]
+abc.append(只能是一项)
+abc.extend(可以是列表)	
+abc.insert(位置，内容)	
+abc.remove('删除内容')
+del abc[index number]
+del abc#整表删除
+abc.pop()#返回最后一项并删除
+name=abc.pop()#可以赋值
+name=abc.pop(index number)	
+abc[1:3]#列出1项和2项
+list 比较只比较第一个值 返回T or F
+dir(list) #显示出有关list的所用函数
+abc.count(内容)#数内容次数
+abc.index(内容)
+abc.index(内容，2，4#范围)
+abc.reverse()
+abc.sort()#改变顺序
+abc.sort(reverse=True)#逆序
+
+# iphython notebook
+# linux 装软件 简单 pip install jupyter
+# pip install numpy
+# pip install padas
+# Anaconda 是个包裹 啥都有
+# cmd里面输入ipython就可以进入ipython界面
+# cmd 输入 Jupyter notebook就能进入IE 界面
+# 名字后面输入？ 显示这个名字的属性 data?
+# np.*load*? np里有关load的函数
+# import numpy as np 调用numpy包裹 
+# data= {i: np.randam.randn() for i in range(7)}
+# shift + enter 执行
+# 打几个字按tab for auto-completion
+# %run 文件名.后缀  在一个文件中run另一个文件
+# import matplotlib.pyplot as plt
+# %matplotlib inline
+# np.random.randn(50).cumsum() 弄50个随机数然后累加
+# plt.plot(np.random.randn(50).cumsum()) 用plt功能绘图
+# abc=!dir 跟系统交互 执行系统命令 ‘！’表示执行
+# %pwd %hist显示历史
+# run 文件  for debug  一行一行执行
+[i*i for i in range(10)]
+#[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+#list comprehensions 列表解析
+#[有关A的表达式for A in range(B)] 
+list3 = [name + '：' + slogan[2:] for slogan in list1 for name in list2 if slogan[0] == name[0]] 
+#字符串方法
+str1.capitalize()#首字母大写 不改变原str1
+str1.casefold()#所有改小写 不改变原str1
+center(width)#居中
+count(sub, sta, end)
+	
 		
 		
