@@ -563,8 +563,239 @@ list3 = [name + '：' + slogan[2:] for slogan in list1 for name in list2 if slog
 #字符串方法
 str1.capitalize()#首字母大写 不改变原str1
 str1.casefold()#所有改小写 不改变原str1
-center(width)#居中
-count(sub, sta, end)
+str1.center(width)#居中
+str1.count(sub, sta, end) #范围可写可不写
+str1.endswith(内容)  # T or F/startswith()
+str1.find(neirong)#返回索引值 没有的话返回-1
+index(neirong)# 返回索引值 没有的话返回异常
+isalnum()#如果字符串中至少有一个字符 且全为字符和数字 返回T 反之F
+isalpha()#只有字符
+isdecimal()#只有10进制
+isdigit()#只有数字
+islower()#
+isnumeric()#只有数字
+isspace()#只有空格
+istitle()#只有且全部首字母大写
+isupper()#大写
+join(内容)# str1='ab' str2='12345' str2.join(str1) should be a12345b12345
+ljust()#左对齐
+lower()#转小写/upper()
+lstrip()#去掉左边所有空格/ rstrip()/strip() 只对2边的东西有效
+partition(neirong)# str2.partition(3) should be('12', '3', '45')
+replace(old, new, [count])
+split()#切分 啥也不放 默认空格 切啥啥消失
+swapcase()#大小写互换
+title()#返回标题式 每个词大写开头
+#在字符串前加‘r’表示使用原始字符串 file1 = open(r'C:\windows\temp\readme.txt', 'r')
+'{0:.1f}{1}'.format(27.658, 'GB') #'27.7GB'
+'{0}{1:.2f}'.format('Pi = ', 3.1415)#'Pi = 3.14'
+'%c %c %c' %(97, 98, 99) #'a b c' ASCII码   
+%s #字符串
+%d #格式化整数
+%o #8进制 '%o' %10 # 12
+%x # '%x' %10 #a
+%X # '%X' %10 #A '%X' %160 #A10
+%f #定点数 '%f' %27.658 # 27.658000 默认8位
+%e # 科学计数法 '%e' %27.658 # 2.765800e+01
+%g #只能版本 根据大小自动选择%f or %e
+m.n n指小数点后面位数 m基本打酱油 %.2f %.2e 
+%# 显示8(o)和16(x)进制 如 '%#o' %10 # 0o12  '%#X' %108 #0X6C
+'%010d' %5 #'0000000005' 0表示用0占位空格 10表示定位10位
+
+# 密码安全性检查代码
+#
+# 低级密码要求：
+#   1. 密码由单纯的数字或字母组成
+#   2. 密码长度小于等于8位
+#
+# 中级密码要求：
+#   1. 密码必须由数字、字母或特殊字符（仅限：~!@#$%^&*()_=-/,.?<>;:[]{}|\）任意两种组合
+#   2. 密码长度不能低于8位
+#
+# 高级密码要求：
+#   1. 密码必须由数字、字母及特殊字符（仅限：~!@#$%^&*()_=-/,.?<>;:[]{}|\）三种组合
+#   2. 密码只能由字母开头
+#   3. 密码长度不能低于16位
+
+a = r'''`!@#$%^&*()_+-=/*{}[]\|'";:/?,.<>'''
+b = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+c = '0123456789'
+pw=input('please enter your password')
+pwl=len(pw)
+while (pwl == 0) or pw.isspace():
+    pw=input('please reenter your password with something!')
+    pwl=len(pw)
+if pwl <= 8:
+    pw_l = 1
+elif 8 < pwl < 16:
+    pw_l = 2
+else:
+    pw_l = 3
+flag_con = 0
+pw_c = 0
+for each in pw:
+    if each in a:
+        pw_c +=1
+        break
+for each in pw:
+    if each in b:
+        pw_c +=1
+        break
+for each in pw:
+    if each in c:
+        pw_c += 1
+        break
+while 1:
+    print('Your password level is ', end='')
+    if pw_l == 1 or pw_c == 1 :
+        print('low')
+    elif pw_l == 2 or pw_c == 2:
+        print('medium')
+    elif pw_l == 3 or pw_c == 3:
+        print('high')
+        print('继续保持！')
+        break
+    print('请按以下方式提升您的密码安全级别:\n\
+    \t1. 密码必须由数字、字母及特殊字符三种组合\n\
+    \t2. 密码只能由字母开头\n\
+    \t3. 密码长度不能低于16位')
+    break
+
+a=list()#a 是个空[]
+b= 'abc'
+b=b.list() # ['a', 'b', 'c' ] tuple也能这么搞
+sum(numbers, 8)#指求完numbers的和再加8
+sorted(abc)
+list(reversed(numbers))
+list(enumerate(numbers))#索引值变元组第一个和值组成元组
+list(zip(a, b)) #合成list a and b 成双成对打包
+def abc(*param)  #*号表示N多个变量
+global/nonlocal 可以改变全局变量
+lambda x ：2 * x + 1 #匿名函数 左边参数 右边return内容
+fileter(函数，可迭代序列 iterable）#过滤器 两个参数 第一个参数可以是个None or function，第二个可迭代数据中每个元素作为function的参数进行运算，把返回True的元素组成一个新的列表返回  
+fileter(None, [1, 0, False, True])#过滤掉非True结果
+
+def odd(x):
+	return x % 2 #奇数返回1(True) 偶数返回0(False)
+temp = range(10)
+show = filter(odd, temp) #[1, 3, 5, 7, 9] 用odd功能对temp进行筛选 对True进行返回
+list(filter(lambda x: x % 2, range(10))) #先是功能 后面是实现功能的地方
+
+map(函数，可迭代序列 iterable) #映射 将序列的每一个元素作为函数的参数进行运算加工，返回所有元素加工完成后的新序列
+list(map(lambda x : x * 2, range(10)))#[0,2,4,6,8,10,12,14,16,18]
+#zip 会将2个数以元组的形式组合起来
+#list(zip([1, 3, 5, 7, 9], [2, 4, 6, 8, 10])) #[(1, 2), (3, 4), (5, 6), (7, 8), (9, 10)] 
+#问如何弄成list模式
+list(map(lambda x, y : [x, y], [1, 3, 5, 7, 9], [2, 4, 6, 8, 10]))
+#[[1, 2], [3, 4], [5, 6], [7, 8], [9, 10]]
+#列表推到式 100以内能整除3的数
+[ i for i in range(1, 100) if not(i%3)]
+def fun_A(x, y=3):
+        return x * y
+lambda x, y=3 : x * y
+#上面2个一回事
+#递归 汉诺塔 树结构 函数调用自身的行为 有一个结束循环的行为 递归递归要有归
+#1*2*3*4*...n
+def factorial(x):
+	result = x
+	for i in range(1, x):
+		result = result * i
+	return result
+def r(x):
+	if x == 1 :
+		return 1
+	else:
+		return x * r(x-1)
+import sys 
+sys.setrecursionlimit(10000)#默认递归100层  用这个可以改
+#fabnacci数列
+def fab(n):
+	n1 = 1
+	n2 = 1
+	n3 = 1
+	if n < 1: 
+		print('Wrong input')
+		return -1
+	while (n - 2) > 0:
+		n3 = n1 + n2
+		n1 = n2
+		n2 = n3
+		n -= 1
+	return n3
+print(fab(20))		
+#递归写法
+def F(n):
+	if n < 1 :
+		print('wrong input')
+		return -1
+    elif n == 1 or n == 2:
+        return 1
+    else:
+        return F(n-1) + F(n-2)
+result = F(20)
+if result != -1
+	print('There are total %d pair of rabbit' %result)
+#汉诺塔
+def hanoi(n, fr, empty, to):
+	if n == 1:
+		print(fo, '-->' to)
+	else:
+		hanoi(n-1, fr, to, empty)#将n-1个盘子移动到empty上
+		print(fr, '-->', to)将最底下的最后一个盘子移动从x移动到z上
+		hanoi(n-1, empty, fr, to)#将n-1个盘子移动到to上
+#使用递归编写一个十进制转为二进制的函数（要求采用“取2取余”的方式，结果与调用bin()一样返回字符串形式）	
+def decimal_to_binary(n)
+	result= ''
+	if n:
+		result = decimal_to_binary(n // 2)
+		return result + str(n % 2)
+	else:
+		return result
+#写一个函数 get_digit(), 将参数n分解出每个位的数字并按顺序存放到列表中 例get_digit(12345)-->[1,2,3,4,5]
+result=[]
+def get_digit(n):
+	if n > 0:
+	result.insert(0, n%10)
+	return get_digit(n // 10)
+#dictionary 花括号 key value
+brand = ['Lining', 'Nike', 'Adidas', 'FishC']
+slogan= ['一切皆有可能', 'Just do it', 'Impossible is nothing', '让变成改变世界']
+dict1={'Lining': '一切皆有可能', 'Nike': 'Just do it', 'Adidas' : 'Impossible is nothing', 'FishC': '让变成改变世界'}
+print('FishC工作室的口号是', dict1['FishC'])
+dic2={1:'one', 2: 'two', 3: 'three'}
+dict3={}#empty dict
+dict4=dict((('F', 70), ('i', 105), ('s', 115),('h', 104),('C', 67)))#list也OK 那么多括号是因为dict只接收一个参数 
+#{'F': 70, 'i': 105, 's': 115, 'h': 104, 'C': 67}
+dict5= dict(小甲鱼='让编程改变世界'，苍井空='让AV征服世界')#Key不能带引号
+#{'小甲鱼': '让编程改变世界', '苍井空': '让AV征服世界'}
+dict5['苍井空']='所有AV从业者都要通过学习编程来提高职业技能'
+#now dict5 is {'小甲鱼': '让编程改变世界', '苍井空': '所有AV从业者都要通过学习编程来提高职业技能'}
+#直接通过以上方法改变value， 如果dict5 中没有这个key 就添加新的key+value
+#一下代码都是在执行一个操作
+>>> a = dict(one=1, two=2, three=3)
+>>> b = {'one': 1, 'two': 2, 'three': 3}
+>>> c = dict(zip(['one', 'two', 'three'], [1, 2, 3]))
+>>> d = dict([('two', 2), ('one', 1), ('three', 3)])
+>>> e = dict({'three': 3, 'one': 1, 'two': 2})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 		
 		
