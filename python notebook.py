@@ -777,19 +777,57 @@ dict5['苍井空']='所有AV从业者都要通过学习编程来提高职业技�
 >>> c = dict(zip(['one', 'two', 'three'], [1, 2, 3]))
 >>> d = dict([('two', 2), ('one', 1), ('three', 3)])
 >>> e = dict({'three': 3, 'one': 1, 'two': 2})
+#dict唯一的映射类型 {}  
+dict1={}
+dict1.fromkeys((1,2,3),'number')#number只可以是1个值
+#{1: 'number', 2: 'number', 3: 'number'}
+dict1.fromkeys((range(32), '赞'))#32个赞 哈哈
+for eachkey in dict.keys():#每个key
+for eachvalue in dict.values():#每个value
+for eachitem in dect.items():#以元组的形式列出每一项
+dict1.get(32,'木有')#找不到key的时候不会报错，会返回后面的木有，如果没写真实返回是个None，如果有的话会返回对应值
+in / not in
+dict1.clear() #清空
+dict1.copy()#弄个新的copy
+dict.pop(key)#弹出值并删除
+dict1.popitem()#随机弹出个项
+dict1.detdefault(key,value)#添加一项
+dict1.update(dict2)#用另一个dict更新原有dict
+#set 集合 只存储单一值
+#去重复
+num1=list(set(num1)) #num1是个list 得到的新list是个无序的
+访问set内地值 in/not in 
+#内置方法
+num2.add(3)#添加一项
+num2.remove(3)#删除内容 没有会报错
+num2.discard(3)#删除内容 没有不会报错
+num3=frozenset([1,2,3,4,5]) #num3不可改变
+s.union(t) #合并
+s.intersection(t)#s和t的交叉
+s.differece(t)#s有t没有
+s.symmetric_defference(t) #s有t有但是不交叉的部分
+s.update(t)#加t至s中
 
-
-
-
-
-
-
-
-
-
-
-
-
+#文件
+y=open(abc.txt, 'w')#w-over writer, 'x'为可写 如已经有文件存在则报错 a-续写， '+'-可读可写
+y.close()#用完别忘了关 关了才会保存到磁盘
+y.read(size)# 不做设置读到末尾，指针知道末尾
+y.readline()#读取当前行
+y.write(str)
+y.tell()#返回当前指针位置
+list(y)
+seek(offset,from)
+y.seek(45, 0)#指针知道45
+seek(0,0)#指针指向开头
+for each_line in y:
+	print(each_line)#打印文件的每一行
+f=open(E:/test.txt,'w')#创建一个test文件
+#将一个文件保存成一个新的文件
+f1 = open(abc.py)
+f2 = open(bcd.txt, 'x')
+f2.write(f1.read())
+f2.close()
+f1.close()
 
 
 
