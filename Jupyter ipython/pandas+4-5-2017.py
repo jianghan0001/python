@@ -195,7 +195,7 @@ frame2['eastern'] = frame2.state == 'Ohio'#给一个不存在的列赋值会产�
 frame2
 
 
-# In[ ]:
+# In[ ]: have a rest
 
 
 
