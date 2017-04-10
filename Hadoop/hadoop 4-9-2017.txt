@@ -1,0 +1,46 @@
+Nature of the data
+volume 数据大 机器产生的data general每天处理500G数据
+velocity realtime data 实时性 例如信用卡申请 分析渠道 哪个chinal
+variety unstructure data log data
+
+Nature of the analusis
+batch processing 批量处理
+parallel execution 不是一个一个来处理的 按组处理 例如1组有10个file
+distributed data
+
+distributed system
+use multiple machines for a single job
+distribyte data when the data is stored 存进去的时候就splited了
+run computation where the data is #data locality
+
+nodes talk to each other as little as possible
+data is distributed in advance
+bring the comoutation to the data
+data is replicated for increased availability and reliability
+Hadoop is scalable and fault-tolerant 数据存的时候存3份
+
+HDFS hadoop distributed file system   #storage HDFS is a filesystem written in Java have bigger block size depend on data size
+不可以按行修改 只能重新全写一遍 file-based 全文扫描 
+
+apache hadoop ecosystem
+
+YARN MAP REDUCE V2 distributed processing framework #resource management
+
+Oozie workflow #schedullar 
+
+Pig scriping
+
+Hive sql query
+
+Mathout Machine learning
+
+R connectors statistics 
+
+Hbase nosql
+
+sqoop ETL 
+
+storm realtime data
+
+name node --> master node
+
