@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[2]:
+# In[3]:
 
 import pandas as pd
 import numpy as np
@@ -147,7 +147,7 @@ s2 = Series([-2.1, 3.6, -1.5, 4, 3.1], index=['a', 'c', 'e', 'f', 'g'])
 s1 + s2
 
 
-# In[50]:
+# In[4]:
 
 #把它们相加后将会返回一个新的DataFrame，其索引和列为原来那两个DataFrame的并集
 df1 = DataFrame(np.arange(9.).reshape((3, 3)), columns=list('bcd'), index=['Ohio', 'Texas', 'Colorado'])
@@ -169,6 +169,11 @@ df2
 
 #使用df1的add方法，传入df2以及一个fill_value参数
 df1.add(df2, fill_value= 0)
+
+
+# In[5]:
+
+df1.sub(df2, fill_value= 0)
 
 
 # In[ ]:
@@ -293,7 +298,7 @@ obj = Series(range(4), index=['d', 'a', 'b', 'c'])
 obj.sort_index()
 
 
-# In[117]:
+# In[6]:
 
 #而对于DataFrame，则可以根据任意一个轴上的索引进行排序
 frame = DataFrame(np.arange(8).reshape((2, 4)), index=['three', 'one'], columns=['d', 'a', 'b', 'c'])
@@ -322,6 +327,122 @@ obj.order()
 
 obj = Series([4, 7, -3, 2])
 obj.sort_values()
+
+
+# In[7]:
+
+frame = DataFrame({'b': [4, 7, -3, 2], 'a': [0, 1, 0, 1]})
+frame
+
+
+# In[8]:
+
+frame.sort_index(by = 'b')
+
+
+# In[12]:
+
+frame.sort_values(by = 'a', ascending = False)#按某一列排序
+
+
+# In[14]:
+
+frame.sort_values(by = 2, axis = 1) #按某一行排序
+
+
+# In[16]:
+
+#rank功能
+obj = Series([7, -5, 7, 4, 2, 0, 4])
+obj
+
+
+# In[17]:
+
+obj.rank()
+
+
+# In[22]:
+
+obj.rank(method = 'first')
+
+
+# In[23]:
+
+obj.rank(ascending = False, method = 'max')
+'''
+'average' 在相等分钟中卫格格之分配平均排名
+'min' 使用整个分组的最小排名
+'max' 最大排名
+'first' 按值在原始数据中的出现顺序分配排名
+'''
+
+
+# In[25]:
+
+frame = DataFrame({'b': [4.3, 7, -3, 2], 'a': [0, 1, 0, 1], 'c': [-2, 5, 8, -2.5]})
+frame
+
+
+# In[26]:
+
+frame.rank(axis =1)
+
+
+# In[27]:
+
+obj = Series(range(5), index=['a', 'a', 'b', 'b', 'c'])
+obj
+
+
+# In[28]:
+
+obj.index.is_unique
+
+
+# In[29]:
+
+obj['a'] #index有重复值时返回一个series
+
+
+# In[31]:
+
+df = DataFrame(np.random.randn(4,3), index = ['a','a','b','b'])
+df
+
+
+# In[32]:
+
+df.ix['b']
+
+
+# In[33]:
+
+df.idxmax()
+
+
+# In[35]:
+
+#累计型 cumsum
+df.cumsum(axis = 1)
+
+
+# In[36]:
+
+df.describe()#Generate various summary statistics
+'''
+pct_change 计算百分数变化
+cummin， cummax 累计最小最大值
+kurt 样本值的峰度
+skew 样本值的偏度
+count
+
+'''
+
+
+# In[44]:
+
+from pandas.io import data
 
 
 # In[ ]:
