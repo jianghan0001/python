@@ -1,9 +1,9 @@
-Nature of the data
+﻿Nature of the data
 volume 数据大 机器产生的data general每天处理500G数据
 velocity realtime data 实时性 例如信用卡申请 分析渠道 哪个chinal
 variety unstructure data log data
 
-Nature of the analusis
+Nature of the analysis
 batch processing 批量处理
 parallel execution 不是一个一个来处理的 按组处理 例如1组有10个file
 distributed data
