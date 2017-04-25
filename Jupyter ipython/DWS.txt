@@ -1,0 +1,19 @@
+1. data sources
+	ERP(oralcle, sql server)
+	legacy data
+	CRM
+	Flat File
+	Clickstream(web log)
+2. ODS/staging/injustion(呑进来）/discovery zone（最早可以发现的地方）(near real time)
+	(oprational data store整合 is a database designed to integrate data from mutiple sources fro additional operations on the data)
+	ETL process 第一层把源数据拿过来是不做改变 row in and row out(general role)
+3. DATA warehouse transformation denormalization
+4. datamart sales, HR, Finance, Inventory, Clickstream, near real time reporting, operational reporting etc.
+5.reporting
+
+data warehouse vs 					data mart
+enterprise-wide data			department-wide data
+multiple subject areas			single subject area
+difficult to build				easy to build
+large memory					limited memory
+takes more time to build		less time to build
