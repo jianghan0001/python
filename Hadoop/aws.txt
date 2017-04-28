@@ -1,0 +1,27 @@
+aws--> amazon web service
+
+horizontal scaling--> spread the workload across mutiple severs
+vertical scaling--> increase the memory
+
+s3--> simple storage service Objects are either fully retrieved or not at all. You cannot modify an object, only replace it
+	Analogy: Let’s say you have an existing Excel file on your computer. If you open it and make a change to one cell, only the
+	change is written to the hard drive. To do the same thing in S3, the original Excel file would be deleted and replaced with the
+	updated version.
+
+EC2 (Elastic Cloud Compute), EC2 - CPU and Memory, AMI(Amazon Machine image like RHEL, Ubuntu, CentOS)
+
+Instances need some local storage for the operating system itself and to hold any programs we install. This local storage is called EBS (Elastic Block Storage)
+
+The most common way to connect to an instance is to ssh through the command line.
+chmod 500 zeroonetraininghj.pen #给权限
+ssh -i ./zeroonetraininghj.pen ec2-user@123.123.123.123 #登录ec2
+sudo yum install wget
+sudo yum install bzip2
+wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh
+
+下好的文件别忘了 chmod 777
+source ~/.bashrc 刷一个这个文件  这样就能默认执行anaconda的python了
+Open a second terminal or git bash window. ssh in again, but this time forward the port from your instance to your local computer. Make sure you scroll over to see the whole line!
+
+	ssh -L localhost:8888:localhost:8888 -i [local path to your ssh-key without brackets] ec2-user@[private ip for your instance without brackets]
+在chrome里输入localhost:8888就能连上ec2了
