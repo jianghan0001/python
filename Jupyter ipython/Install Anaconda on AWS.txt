@@ -1,0 +1,67 @@
+Install Anaconda on AWS 
+
+Assumptions:
+you are connected to your instance through ssh
+
+Instructions:
+
+Precondition: 
+
+sudo yum list installed | grep wget
+sudo yum list installed | grep bzip2
+
+sudo yum install wget
+sudo yum install bzip2
+
+1.	Download the Anaconda setup file from their website.
+
+wget https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-4.0.0-Linux-x86_64.sh
+
+Install Anaconda:
+
+bash Anaconda2-4.0.0-Linux-x86_64.sh
+	i.	When prompted, hit "Enter" to start the install process
+	ii.	Optional: Hit "q" so you don't have to read the entire agreement
+	iii.	Answer "yes" when prompted if you accept the license terms
+	iv.	When it says
+	
+	Anaconda2 will now be installed into this location: /home/ec2-user/anaconda2
+	hit "Enter" to confirm this location
+	v.	Do you wish the installer to prepend the Anaconda2 install location to PATH in your /home/ec2-user/.bashrc ?
+
+		answer "yes"
+
+Execute the config file so Anaconda is recognized in this session:
+
+	source ~/.bashrc
+
+Verify the installation was successful:
+
+which python
+It should return something like this:
+
+~/anaconda2/bin/python
+
+
+Running Jupyter on AWS 
+
+Assumptions:
+
+you are connected through ssh to your instance
+jupyter installed on your instance
+
+Instructions:
+
+1. Launch jupyter notebook, suppressing the browser launch:
+
+	jupyter notebook --no-browser
+
+2. Open a second terminal or git bash window. ssh in again, but this time forward the port from your instance to your local computer. Make sure you scroll over to see the whole line!
+
+	ssh -L localhost:8888:localhost:8888 -i [local path to your ssh-key without brackets] ec2-user@[private ip for your instance without brackets]
+
+3. Access the forwarded port by going to the address bar in Firefox or Chrome and typing:
+
+	localhost:8888
+
+
